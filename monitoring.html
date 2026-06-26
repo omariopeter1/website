@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART-FARM </title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+/* GLOBAL RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    background:linear-gradient(135deg,#041b0f,#063d22,#0b5a30,#0f6b3a);
+    color:white;
+    min-height:100vh;
+     background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('assets/whole grain.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* NAVBAR */
+.navbar{
+    background-color:rgba(20, 60, 30, 0.85);
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.navbar b{
+    font-size:20px;
+}
+
+/* LINKS */
+.navbar a{
+    color:#b6ffb6;
+    text-decoration:none;
+    margin-left:15px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:#ffffff;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    padding:25px;
+}
+
+.header h1{
+    font-size:38px;
+}
+
+.header p{
+    opacity:0.85;
+    margin-top:5px;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:space-around;
+    margin:20px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.stat-box{
+    text-align:center;
+    padding:15px;
+    background:rgba(255,255,255,0.08);
+    border-radius:12px;
+    min-width:180px;
+    backdrop-filter:blur(10px);
+}
+
+.stat-box h2{
+    color:#7CFC90;
+}
+
+/* CONTAINER */
+.container{
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:20px;
+}
+
+/* CARDS */
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;
+    padding:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* CANVAS */
+canvas{
+    width:100% !important;
+    height:300px !important;
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    padding:10px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+    opacity:0.7;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <b>SMART-FARM</b>
+    <div>
+        <a href="dashboard.html">Home</a>
+        <a href="weather.html">Weather</a>
+        <a href="database1.html">My Records</a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Welcome back, Dear  user</h1>
+    <p>Here’s a simple look at your farm progress, rainfall, and market trends today.</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+
+    <div class="stat-box">
+        <h2>🌱 Healthy Crops</h2>
+        <p>Most of your crops are doing well</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>🌧 Rain Update</h2>
+        <p>120mm this month so far</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>💰 Market</h2>
+        <p>Prices are slightly rising (+15%)</p>
+    </div>
+
+</div>
+
+<!-- CHARTS -->
+<div class="container">
+
+    <div class="card">
+        <h3>🌾 Your Harvest vs Market Prices</h3>
+        <p style="opacity:0.7;font-size:13px;">This shows how your production compares with market changes.</p>
+        <canvas id="prod"></canvas>
+    </div>
+
+    <div class="card">
+        <h3>🌧 Rainfall This Week</h3>
+        <p style="opacity:0.7;font-size:13px;">Helps you plan planting and spraying activities.</p>
+        <canvas id="weather"></canvas>
+    </div>
+
+</div>
+
+<footer>
+© NTUNGAMO HIGH SCHOOL SCIENCE AND TECHNOLOGY CLUB 2026
+</footer>
+
+<script>
+
+/* PRODUCTION CHART */
+new Chart(document.getElementById('prod'),{
+    type:'line',
+    data:{
+        labels:['Jan','Feb','Mar','Apr','May','Jun'],
+        datasets:[
+            {
+                label:'Your Harvest (tons)',
+                data:[5,8,7,10,12,15],
+                borderColor:'#7CFC90',
+                backgroundColor:'rgba(124,252,144,0.2)',
+                fill:true,
+                tension:0.4
+            },
+            {
+                label:'Market Price Trend',
+                data:[800,900,750,1100,950,1200],
+                borderColor:'#FFD700',
+                backgroundColor:'rgba(255,215,0,0.2)',
+                fill:true,
+                tension:0.4
+            }
+        ]
+    },
+    options:{
+        plugins:{
+            legend:{labels:{color:'white'}}
+        },
+        scales:{
+            x:{ticks:{color:'white'}},
+            y:{ticks:{color:'white'}}
+        }
+    }
+});
+
+/* WEATHER CHART */
+new Chart(document.getElementById('weather'),{
+    type:'bar',
+    data:{
+        labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        datasets:[{
+            label:'Rainfall (mm)',
+            data:[20,15,5,0,30,25,10],
+            backgroundColor:'#2ecc71'
+        }]
+    },
+    options:{
+        plugins:{
+            legend:{labels:{color:'white'}}
+        },
+        scales:{
+            x:{ticks:{color:'white'}},
+            y:{ticks:{color:'white'}}
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>

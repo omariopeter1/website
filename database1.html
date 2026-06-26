@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SMART-FARM</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    flex-direction:column;
+    background-image:url('assets/whole grain.jpg');
+    background-size:cover;
+    background-position:center;
+    margin: 0;
+    padding: 20px;
+}
+
+.card{
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+button{
+    padding: 10px;
+    width: 100%;
+    background: #22c55e;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #16a34a;
+}
+
+table th, table td{
+    border:1px solid rgba(255,255,255,0.2);
+    padding:8px;
+    text-align:center;
+    font-size:13px;
+}
+
+table th{
+    background: rgba(0,0,0,0.5);
+}
+
+table tr:hover{
+    background: rgba(255,255,255,0.1);
+}
+a{
+    text-decoration: none;
+    color:rgb(89, 156, 156);
+}
+h2{
+    color:rgb(14, 8, 66);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2> Farm Records</h2> <a href="dashboard.html">Back home</a><br>
+
+    <input id="crop" type="text" placeholder="Crop Name">
+    <input id="date" type="date">
+    <input id="expense" type="number" placeholder="Expenses (UGX)">
+    <input id="income" type="number" placeholder="Income (UGX)">
+
+    <button onclick="saveRecord()">Save Record</button>
+
+    <hr style="margin:20px 0;">
+
+    <h3>Search Records</h3>
+
+    <input type="text" id="searchInput"
+           placeholder="Search by Crop or Date..."
+           onkeyup="searchTable()">
+
+    <br><br>
+
+    <div style="max-height:250px; overflow-y:auto;">
+        <table id="recordsTable" style="width:100%; border-collapse:collapse;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Crop</th>
+                    <th>Health</th>
+                    <th>Moisture</th>
+                    <th>Disease</th>
+                    <th>Yield</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody">
+                <tr>
+                    <td>2026-06-20</td>
+                    <td>Maize</td>
+                    <td>Healthy</td>
+                    <td>75%</td>
+                    <td>None</td>
+                    <td>3.5 Tons</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+// SEARCH FUNCTION
+function searchTable() {
+    let input = document.getElementById("searchInput").value.toUpperCase();
+    let rows = document.getElementById("tableBody").getElementsByTagName("tr");
+
+    for (let i = 0; i < rows.length; i++) {
+        let text = rows[i].innerText.toUpperCase();
+        rows[i].style.display = text.includes(input) ? "" : "none";
+    }
+}
+
+// SAVE RECORD + LOCAL STORAGE
+function saveRecord() {
+    let crop = document.getElementById("crop").value;
+    let date = document.getElementById("date").value;
+    let expense = document.getElementById("expense").value;
+    let income = document.getElementById("income").value;
+
+    if(!crop || !date){
+        alert("Please fill crop and date!");
+        return;
+    }
+
+    let table = document.getElementById("tableBody");
+
+    let row = table.insertRow();
+    row.innerHTML = `
+        <td>${date}</td>
+        <td>${crop}</td>
+        <td>Pending</td>
+        <td>-</td>
+        <td>-</td>
+        <td>${income || 0} Tons</td>
+    `;
+
+    saveToLocal();
+
+    // clear inputs
+    document.getElementById("crop").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("expense").value = "";
+    document.getElementById("income").value = "";
+}
+
+// SAVE TO LOCAL STORAGE
+function saveToLocal(){
+    let table = document.getElementById("tableBody").innerHTML;
+    localStorage.setItem("farmData", table);
+}
+
+// LOAD FROM LOCAL STORAGE
+window.onload = function(){
+    let data = localStorage.getItem("farmData");
+    if(data){
+        document.getElementById("tableBody").innerHTML = data;
+    }
+}
+</script>
+
+</body>
+</html> 

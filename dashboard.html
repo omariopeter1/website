@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART-FARM</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f5132,#198754,#20c997);
+    color:white;
+    min-height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('assets/whole grain.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+}
+
+/* NAVBAR */
+.navbar{
+    background-color:rgba(20, 60, 30, 0.85);
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:bold;
+}
+
+.navbar a{
+    color:white;
+    margin-left:15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:#ffe066;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:55px;
+}
+
+.hero p{
+    margin-top:10px;
+    opacity:0.9;
+}
+
+/* GRID */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:20px;
+    border-radius:20px;
+    transition:0.3s;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,0.22);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    opacity:0.9;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:15px;
+    width:80%;
+    max-width:400px;
+}
+
+.modal-content button{
+    margin-top:15px;
+    padding:10px;
+    width:100%;
+    border:none;
+    background:#198754;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.3);
+    margin-top:20px;
+}
+H1{
+    color:rgb(43, 189, 43);
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo"> SMART-FARM APP</div>
+    <div>
+        <a href="index.html">Logout</a>
+        <a href="chat.html">Chat</a>
+        <a href="agrivet bot.html">AI Vet</a>
+        <a href="database1.html">Farm records</a>
+        <a href="crop.html">Crop monitoring</a>
+        <a href="weather.html">Weather</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>SMART-FARM Dashboard</h1>
+    <p>Manage crops, livestock, weather & agricultural intelligence</p>
+</section>
+
+<!-- CARDS -->
+<div class="container">
+
+<div class="card" onclick="openCard('Crop Monitoring','Track crops, growth stages, and field performance.')">
+<h3>🌽 Crop Monitoring</h3>
+<p>Track crop growth and field health in real time.</p>
+</div>
+
+<div class="card" onclick="openCard('Weather Forecast','Get rainfall, drought and climate updates.')">
+<h3>🌦 Weather Forecast</h3>
+<p>Plan farming activities using weather predictions.</p>
+</div>
+
+<div class="card" onclick="openCard('Farm Activities','Schedule planting, harvesting and labor tasks.')">
+<h3>📋 Farm Activities</h3>
+<p>Organize and manage daily farm operations.</p>
+</div>
+
+<div class="card" onclick="openCard('Disease Detection','AI helps detect crop diseases from images.')">
+<h3>🦠 Disease Detection</h3>
+<p>Upload crop images for AI diagnosis.</p>
+</div>
+
+<div class="card" onclick="openCard('Livestock','Manage animals, vaccines and production.')">
+<h3>🐄 Livestock</h3>
+<p>Track animal health and production records.</p>
+</div>
+
+<div class="card" onclick="openCard('Marketplace','Buy and sell farm products locally.')">
+<h3>🛒 Marketplace</h3>
+<p>Connect with buyers and sellers easily.</p>
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h2 id="title"></h2>
+        <p id="desc"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+
+<script>
+
+function openCard(title,desc){
+    document.getElementById("title").innerText = title;
+    document.getElementById("desc").innerText = desc;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

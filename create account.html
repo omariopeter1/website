@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART-FARM</title>
+
+<style>
+body{
+    background: linear-gradient(135deg, rgba(0,255,0,0.2), rgba(0,120,0,0.3));
+    font-family: Arial, sans-serif;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+}
+
+form{
+    background: bisque;
+    padding: 25px;
+    border-radius: 20px;
+    width: 340px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1,h2{
+    text-align:center;
+}
+
+.box, select{
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: darkgreen;
+}
+
+.msg{
+    text-align:center;
+    font-size:12px;
+    margin-top:10px;
+}
+
+a{
+    text-decoration:none;
+    color:red;
+}
+a:hover{
+    color:darkred;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<form id="registerForm">
+
+    <h1> SMART-FARM WEB</h1>
+    <h2>Create Account</h2>
+
+    <input id="username" class="box" type="text" placeholder="Username" required>
+    <input id="firstname" class="box" type="text" placeholder="First Name" required>
+    <input id="lastname" class="box" type="text" placeholder="Last Name" required>
+    <input id="email" class="box" type="email" placeholder="Email" required>
+
+    <input id="password" class="box" type="password" placeholder="Password" required>
+    <input id="confirm" class="box" type="password" placeholder="Confirm Password" required>
+
+    <select id="country">
+        <option>Uganda</option>
+        <option>Kenya</option>
+        <option>USA</option>
+        <option>Congo</option>
+    </select>
+
+    <button type="submit">Create Account</button>
+
+    <p class="msg" id="msg"></p>
+
+    <p style="text-align:center;">
+        Already have an account? <a href="index.html">Login</a>
+    </p>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let firstname = document.getElementById("firstname").value;
+    let lastname = document.getElementById("lastname").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm").value;
+    let msg = document.getElementById("msg");
+
+    // password check
+    if(password !== confirm){
+        msg.style.color = "red";
+        msg.innerText = "Passwords do not match!";
+        return;
+    }
+
+    // fake "account storage"
+    let user = {
+        username,
+        firstname,
+        lastname,
+        email,
+        password,
+        country: document.getElementById("country").value
+    };
+
+    localStorage.setItem("agri_user", JSON.stringify(user));
+
+    msg.style.color = "green";
+    msg.innerText = "Account created successfully! Redirecting...";
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1500);
+});
+</script>
+
+</body>
+</html>

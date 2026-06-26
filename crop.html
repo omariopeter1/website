@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART-FARM</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background-image:url('assets/whole grain.jpg');
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+/* DARK OVERLAY */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    z-index:-1;
+}
+
+/* NAVBAR */
+.NavBar{
+    background:rgba(20, 70, 35, 0.9);
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.title{
+    font-weight:bold;
+    color:#7CFC90;
+    font-size:24px;
+}
+
+/* LINKS */
+.dashboard{
+    margin:0 10px;
+    text-decoration:none;
+    color:#dfffe0;
+    font-weight:bold;
+}
+
+.dashboard:hover{
+    color:white;
+    text-decoration:underline;
+}
+
+/* BUTTONS */
+.chat{
+    background:tomato;
+    color:white;
+    border:none;
+    border-radius:8px;
+    padding:8px 12px;
+    cursor:pointer;
+}
+
+.chat:hover{
+    background:darkred;
+}
+
+/* MAIN CONTENT */
+.main-content{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.content{
+    background:rgba(0,0,0,0.6);
+    max-width:750px;
+    width:100%;
+    padding:35px 25px;
+    border-radius:18px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+/* TITLE */
+.top{
+    color:#7CFC90;
+    font-size:28px;
+    margin-bottom:25px;
+}
+
+/* FORM */
+.form-group{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.form-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+b{
+    font-size:16px;
+    color:#e6f4ea;
+}
+
+select{
+    padding:8px 10px;
+    border-radius:6px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+}
+
+/* BUTTON */
+.Database{
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.Database:hover{
+    background:#1b5e20;
+    transform:scale(1.03);
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    text-align:center;
+    padding:15px;
+    font-size:13px;
+    opacity:0.7;
+}
+a{
+    color:white;
+    text-decoration: none;
+    padding:15px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="NavBar">
+
+    <div class="title">SMART-FARM</div>
+
+    <div>
+        <a class="dashboard" href="dashboard.html">Home</a>
+        <a class="dashboard" href="database1.html">Farm Records</a>
+        <a class="dashboard" href="weather.html">Weather</a>
+
+        <a href="chat.html">Chat</a>
+        <a href="agrivet bot.html">AgriVet</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main-content">
+
+    <div class="content">
+
+        <h3 class="top">Crop Monitoring & Livestock Management</h3>
+
+       
+
+        <a href="monitoring.html">
+            <button class="Database">Start Monitoring</button>
+        </a>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+NTUNGAMO HIGH SCHOOL SCIENCE AND TECHNOLOGY CLUB© 2026
+</footer>
+
+</body>
+</html>

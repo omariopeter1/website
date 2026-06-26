@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART-FARM</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background-image:url('assets/whole grain.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+}
+
+/* NAVBAR */
+.NavBar{
+    background-color:rgba(20, 60, 30, 0.85);
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.title{
+    font-weight:bold;
+    color:#7CFC90;
+    font-size:24px;
+}
+
+/* NAV LINKS */
+.nav-links a{
+    color:#dfffe0;
+    text-decoration:none;
+    margin:0 10px;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    color:white;
+    text-decoration:underline;
+}
+
+/* BUTTONS */
+.chat{
+    background-color:tomato;
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:8px 12px;
+    cursor:pointer;
+    margin-left:8px;
+}
+
+.chat:hover{
+    background-color:darkred;
+}
+
+/* HERO (optional future use) */
+.hero{
+    height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.Welcome{
+    color:#7CFC90;
+    font-size:40px;
+    text-shadow:2px 2px 5px black;
+}
+
+/* CARDS */
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(6px);
+    width:300px;
+    padding:20px;
+    border-radius:15px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.big_head{
+    color:#7CFC90;
+    margin-bottom:10px;
+}
+
+.body_text{
+    line-height:1.6;
+    font-size:15px;
+}
+
+/* FOOTER */
+footer{
+    background-color:#111;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="NavBar">
+
+    <div class="title">SMART-FARM</div>
+
+    <div class="nav-links">
+        <a href="crop.html">Crop Monitoring</a>
+        <a href="database1.html">Farm Records</a>
+        <a href="weather.html">Weather</a>
+
+        <a href="chat.html">Chat</a>
+        <a href="agrivet bot.html">AgriVet</a>
+    </div>
+
+</div>
+
+<!-- WEATHER CARDS -->
+<div class="container">
+
+    <div class="card">
+        <h3 class="big_head">Sunday</h3>
+        <p class="body_text">
+           Temperature: 28°C<br>
+           Condition: 🌧 Light Rain
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 class="big_head">Monday</h3>
+        <p class="body_text">
+           Temperature: 30°C<br>
+           Condition: ☀ Sunny
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 class="big_head">Tuesday</h3>
+        <p class="body_text">
+           Temperature: 18°C<br>
+           Condition: ❄ Cool & Dry
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 class="big_head">Wednesday</h3>
+        <p class="body_text">
+           Temperature: 24°C<br>
+           Condition: 🌤 Light Breeze
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 class="big_head">Thursday</h3>
+        <p class="body_text">
+           Temperature: 22°C<br>
+           Condition: 🌧 Heavy Rain
+        </p>
+    </div>
+
+    <div class="card">
+        <h3 class="big_head">Friday</h3>
+        <p class="body_text">
+           Temperature: 27°C<br>
+           Condition: 🔥 Hot & Dry
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    NTUNGAMO HIGH SCHOOL SCIENCE AND TECHNOLOGY CLUB© 2026
+</footer>
+
+</body>
+</html>

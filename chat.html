@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART-</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    background:#101d16;
+    color:white;
+    
+}
+#message-input{
+    outline-color: aqua;
+
+}
+/* NAVBAR */
+
+   .navbar{
+    background-color:rgba(20, 60, 30, 0.85);
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.navbar h1{
+    font-size:20px;
+    color:#7CFC90;
+}
+
+.nav-links a{
+    color:#dfffe0;
+    text-decoration:none;
+    margin:0 10px;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    text-decoration:underline;
+}
+
+/* BUTTONS */
+.chat{
+    background:#2e7d32;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.chat:hover{
+    background:#1b5e20;
+}
+
+/* LAYOUT */
+.container{
+    display:flex;
+    gap:15px;
+    padding:15px;
+    flex-wrap:wrap;
+}
+
+/* CHAT BOX */
+.chat-container{
+    flex:2;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    min-height:200px;
+    background:linear-gradient(135deg,#041b0f,#063d22,#0b5a30,#0f6b3a);
+    color:white;
+    min-height:80vh;
+   
+}
+
+/* CHAT AREA */
+.chat-box{
+    flex:1;
+    overflow-y:auto;
+   
+    padding:02px;
+      background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('assets/whole grain.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* INPUT */
+.input-box{
+    display:flex;
+    outline-color:aqua;
+    gap:10px;
+    padding:10px;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.input-box input{
+    flex:1;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    outline:none;
+}
+
+/* FARMERS PANEL */
+.dashboard{
+    flex:1;
+    background:rgba(50, 59, 190, 0.06);
+    padding:15px;
+    border-radius:10px;
+    min-width:250px;
+     
+}
+
+.farmer{
+    padding:10px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    cursor:pointer;
+}
+
+.farmer:hover{
+    background:rgba(80, 243, 80, 0.05);
+}
+
+.status{
+    font-size:12px;
+    opacity:0.7;
+}
+
+/* CHAT HEADER */
+.topheader{
+    background:rgba(0,0,0,0.4);
+    padding:10px;
+    text-align:center;
+    font-size:13px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+    <h1>🌿 MKULIMA</h1>
+
+    <div class="nav-links">
+        <a href="crop.html">Crop</a>
+        <a href="database1.html">Records</a>
+        <a href="weather.html">Weather</a>
+        <a href="dashboard.html">Home</a>
+        <a href="agrivet bot.html">AgriVet</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- CHAT -->
+    <div class="chat-container">
+
+        <div class="chat-box" id="chat-box">
+
+            <div class="topheader">
+               👨 John (Uganda) • Maize Field • Online
+            </div>
+
+        </div>
+
+        <div class="input-box">
+            <input id="message-input" placeholder="Start by saying  hi ...">
+            <button class="chat" onclick="sendMessage()">Send</button>
+        </div>
+
+    </div>
+
+    <!-- FARMERS -->
+    <div class="dashboard">
+
+        <h3>🌍 Farmers Online</h3>
+
+        <div class="farmer">👨 John - Uganda <div class="status">Maize • Online</div></div>
+        <div class="farmer">👩 Bonita- America <div class="status">Coffee • Offline</div></div>
+        <div class="farmer">👨 Dj Sokoto - Brazil <div class="status">Soybeans • Offline</div></div>
+        <div class="farmer">👨 Liam - USA <div class="status">Wheat • Offline</div></div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* SIMPLE FARM AI RESPONSES */
+const tips = {
+    "hi": "Hello farmer 🌿 My name is John and i am from Uganda tell about your crop activities",
+    "hello": "Hi 👋 Tell me what problem your crops are facing.",
+    "weather": "Today is mild 🌤 Good for light farming activities.",
+    "crop": "Describe symptoms like yellow leaves or spots for diagnosis.",
+    "sick": "Please tell me the crop type and symptoms clearly.",
+};
+
+/* SEND MESSAGE FUNCTION */
+function sendMessage() {
+
+    const input = document.getElementById("message-input");
+    const chatBox = document.getElementById("chat-box");
+
+    let userText = input.value.trim();
+    if(userText === "") return;
+
+    // USER MESSAGE
+    chatBox.innerHTML += `
+        <p><b style="color:#7CFC90">You:</b> ${userText}</p>
+    `;
+
+    let response = "I'm still learning 🌱 Please give more details.";
+
+    for(let key in tips){
+        if(userText.toLowerCase().includes(key)){
+            response = tips[key];
+            break;
+        }
+    }
+
+    setTimeout(() => {
+        chatBox.innerHTML += `
+            <p><b style="color:#FFD700">👨 John( Uganda ):</b> ${response}</p>
+        `;
+
+        chatBox.scrollTop = chatBox.scrollHeight; // FIXED BUG
+    }, 500);
+
+    input.value = "";
+}
+
+</script>
+
+</body>
+</html>
